@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-
+import { UserContext } from '../contexts/userContext';
 
 const HomeScreen = ({ navigation }: any) => {
-    function navToGallery  (){
-        navigation.navigate('Gallery')
+    const context = useContext(UserContext);
+
+    function navToGallery() {
+        navigation.navigate('Gallery');
     }
+
     return (
         <View>
-            <Text>Home</Text>
-
-            <Button title='Go To gallery' onPress={navToGallery} />
+            <Text>Bem vindo, {context?.userName || "Nada"}</Text>
+            <Button title="Go To Gallery" onPress={navToGallery} />
         </View>
-    )
-}
+    );
+};
 
-export default HomeScreen
+export default HomeScreen;
